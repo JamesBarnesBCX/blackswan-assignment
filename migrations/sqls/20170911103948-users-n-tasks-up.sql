@@ -1,4 +1,4 @@
-CREATE TABLE `blackswan`.`users` (
+CREATE TABLE `users` (
   `username` VARCHAR(45) NOT NULL,
   `first_name` VARCHAR(45) NOT NULL,
   `last_name` VARCHAR(45) NOT NULL,
@@ -7,7 +7,7 @@ CREATE TABLE `blackswan`.`users` (
   PRIMARY KEY (`username`),
   UNIQUE INDEX `username_UNIQUE` (`username` ASC));
 
-CREATE TABLE `blackswan`.`tasks` (
+CREATE TABLE `tasks` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(155) NOT NULL,
   `description` VARCHAR(500) NULL,

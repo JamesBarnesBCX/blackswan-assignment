@@ -1,3 +1,4 @@
+require('dotenv').config();
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -7,7 +8,6 @@ var bodyParser = require('body-parser');
 var cors=require('cors');
 // var routes = require('./routes/index');
 var Users = require('./routes/users');
-var Tasks=require('./routes/tasks');
 var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -27,7 +27,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 So now, you can use http://localhost:5000/resources/myImage.jpg to serve all the images instead of http://localhost:5000/images/myImage.jpg. */
 // app.use('/', routes);
 app.use('/api/users', Users);
-app.use('/api/tasks',Tasks);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
