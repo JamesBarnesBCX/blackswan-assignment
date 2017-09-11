@@ -5,7 +5,11 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var cors=require('cors');
+var cors = require('cors');
+
+var schedule = require('node-schedule');
+var db = require('./dbconnection');
+
 // var routes = require('./routes/index');
 var Users = require('./routes/users');
 var app = express();
@@ -16,7 +20,9 @@ app.set('view engine', 'jade');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(cors());
 app.use(logger('dev'));
-app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.json({
+  limit: '50mb'
+}));
 // app.use(bodyParser.urlencoded({limit: '50mb', extended: false }));
 
 app.use(cookieParser());
@@ -55,6 +61,24 @@ app.use(function(err, req, res, next) {
   res.render('error', {
     message: err.message,
     error: {}
+  });
+});
+
+//Scheduled Task Completion
+function completeTasks(callback) {
+  var res = db.query("update tasks set status='done', updated_at=NOW() where date_time<=NOW() and status='pending'", callback);
+}
+var job = schedule.scheduleJob('*/5 * * * * *', function() {
+  completeTasks(function(err, rows) {
+    if (err) {
+      // res.json(err);
+      console.log(err);
+    } else {
+      // res.json(rows);
+      if(rows.affectedRows > 0)
+      console.log(rows.affectedRows + " task(s) done");
+      console.log(rows);
+    }
   });
 });
 
