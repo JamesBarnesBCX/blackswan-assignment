@@ -16,6 +16,7 @@ This was my foundation, which I learn't from and adapted to the needs of the ass
 
 #### Overall thoughts
 I enjoyed the assessment, definitly could have improved it but it works well enough (so far as I tested)
+
 Ways it could have been improved:
 * Typescript (For learning)
 * Tests
