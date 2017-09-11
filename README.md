@@ -14,6 +14,15 @@ http://www.c-sharpcorner.com/article/creating-web-api-using-node-js-and-mysql/
 
 This was my foundation, which I learn't from and adapted to the needs of the assessment. The similarities between Express and Laravel in terms of some basic structure made it easier to learn.
 
+#### Overall thoughts
+I enjoyed the assessment, definitly could have improved it but it works well enough (so far as I tested)
+Ways it could have been improved:
+* Typescript (For learning)
+* Tests
+* Check if sanitization happens or not, if not implement a solution to avoid code injection etc.
+* The idea of how to convert users into a fully fledged authentication system came to mind so research into how to create one for fun
+*  API queries to view pending and/or done tasks
+
 ---
 
 #### Create user
